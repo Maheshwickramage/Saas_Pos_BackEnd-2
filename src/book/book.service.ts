@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
 import { Book } from './schemas/book.schema';
-import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class BookService {
@@ -17,5 +17,10 @@ export class BookService {
   async create(book: Book): Promise<Book> {
     const res = await this.bookModel.create(book);
     return res;
+  }
+  async findById(id: string): Promise<Book> {
+    const book = await this.bookModel.findById(id);
+
+    return book;
   }
 }
