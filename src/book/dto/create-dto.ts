@@ -1,9 +1,12 @@
-import { Category } from '../schemas/book.schema';
+// import { Category } from '../schemas/book.schema';
 
 export class CreateBookDto {
-  readonly title: string;
-  readonly author: string;
-  readonly description: string;
-  readonly price: number;
-  readonly category: Category;
+  readonly itemName: string;
+  readonly itemCode: string;
+  readonly quantity: string;
+  readonly supply: string;
+  readonly date: string;
+  readonly unitPrice: string;
+  readonly sellPrice: string;
+  readonly action: string;
 }
