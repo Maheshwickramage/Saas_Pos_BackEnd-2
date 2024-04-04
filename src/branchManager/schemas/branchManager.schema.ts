@@ -10,7 +10,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 @Schema({
   timestamps: true,
 })
-export class Book {
+export class BranchManager {
   @Prop()
   itemName: string;
   @Prop()
@@ -28,4 +28,4 @@ export class Book {
   @Prop()
   action: string;
 }
-export const BookSchema = SchemaFactory.createForClass(Book);
+export const BranchManagerSchema = SchemaFactory.createForClass(BranchManager);

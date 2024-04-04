@@ -7,47 +7,47 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { BookService } from './branchManager.service';
-import { CreateBookDto } from './dto/create-dto';
-import { UpdateBookDto } from './dto/update-book-dto';
-import { Book } from './schemas/branchManager.schema';
+import { BranchManagerService } from './branchManager.service';
+import { CreateBranchManagerDto } from './dto/create-dto';
+import { UpdateBranchManagerDto } from './dto/update-book-dto';
+import { BranchManager } from './schemas/branchManager.schema';
 
-@Controller('book')
-export class BookController {
-  constructor(private bookService: BookService) {}
+@Controller('managers')
+export class BranchManagerController {
+  constructor(private branchManagerService: BranchManagerService) {}
 
   @Get()
-  async getAllBooks(): Promise<Book[]> {
-    return this.bookService.findAll();
+  async getAllBranchManagers(): Promise<BranchManager[]> {
+    return this.branchManagerService.findAll();
   }
   @Post()
   async createBook(
     @Body()
-    book: CreateBookDto,
-  ): Promise<Book> {
-    return this.bookService.create(book);
+    branchManager: CreateBranchManagerDto,
+  ): Promise<BranchManager> {
+    return this.branchManagerService.create(branchManager);
   }
   @Get(':id')
-  async getBook(
+  async getBranchManager(
     @Param('id')
     id: string,
-  ): Promise<Book> {
-    return this.bookService.findById(id);
+  ): Promise<BranchManager> {
+    return this.branchManagerService.findById(id);
   }
   @Put(':id')
-  async updateBook(
+  async updateBranchManager(
     @Param('id')
     id: string,
     @Body()
-    book: UpdateBookDto,
-  ): Promise<Book> {
-    return this.bookService.updateById(id, book);
+    branchManager: UpdateBranchManagerDto,
+  ): Promise<BranchManager> {
+    return this.branchManagerService.updateById(id, branchManager);
   }
   @Delete(':id')
-  async deleteBook(
+  async deleteBranchManager(
     @Param('id')
     id: string,
-  ): Promise<Book> {
-    return this.bookService.deleteById(id);
+  ): Promise<BranchManager> {
+    return this.branchManagerService.deleteById(id);
   }
 }
