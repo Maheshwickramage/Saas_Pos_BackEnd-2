@@ -1,6 +1,6 @@
 // import { Category } from '../schemas/book.schema';
 
-export class CreateBookDto {
+export class CreateBranchManagerDto {
   readonly itemName: string;
   readonly itemCode: string;
   readonly quantity: string;

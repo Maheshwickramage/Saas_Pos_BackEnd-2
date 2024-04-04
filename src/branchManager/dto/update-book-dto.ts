@@ -1,4 +1,4 @@
-export class UpdateBookDto {
+export class UpdateBranchManagerDto {
   readonly itemName: string;
   readonly itemCode: string;
   readonly quantity: string;

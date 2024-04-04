@@ -1,37 +1,40 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import mongoose from 'mongoose';
-import { Book } from './schemas/branchManager.schema';
+import { BranchManager } from './schemas/branchManager.schema';
 
 @Injectable()
-export class BookService {
+export class BranchManagerService {
   constructor(
-    @InjectModel(Book.name)
-    private readonly bookModel: mongoose.Model<Book>,
+    @InjectModel(BranchManager.name)
+    private readonly branchManagerModel: mongoose.Model<BranchManager>,
   ) {}
 
-  async findAll(): Promise<Book[]> {
-    const books = await this.bookModel.find();
-    return books;
+  async findAll(): Promise<BranchManager[]> {
+    const branchManagers = await this.branchManagerModel.find();
+    return branchManagers;
   }
-  async create(book: Book): Promise<Book> {
-    const res = await this.bookModel.create(book);
+  async create(branchManager: BranchManager): Promise<BranchManager> {
+    const res = await this.branchManagerModel.create(branchManager);
     return res;
   }
-  async findById(id: string): Promise<Book> {
-    const book = await this.bookModel.findById(id);
-    if (!book) {
-      throw new NotFoundException('Book Not Found.');
+  async findById(id: string): Promise<BranchManager> {
+    const branchManager = await this.branchManagerModel.findById(id);
+    if (!branchManager) {
+      throw new NotFoundException('BranchManager Not Found.');
     }
-    return book;
+    return branchManager;
   }
-  async updateById(id: string, book: Book): Promise<Book> {
-    return await this.bookModel.findByIdAndUpdate(id, book, {
+  async updateById(
+    id: string,
+    branchManager: BranchManager,
+  ): Promise<BranchManager> {
+    return await this.branchManagerModel.findByIdAndUpdate(id, branchManager, {
       new: true,
       runValidators: true,
     });
   }
-  async deleteById(id: string): Promise<Book> {
-    return await this.bookModel.findByIdAndDelete(id);
+  async deleteById(id: string): Promise<BranchManager> {
+    return await this.branchManagerModel.findByIdAndDelete(id);
   }
 }
