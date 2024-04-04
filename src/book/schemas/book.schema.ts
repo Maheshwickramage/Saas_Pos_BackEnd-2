@@ -29,3 +29,23 @@ export class Book {
   action: string;
 }
 export const BookSchema = SchemaFactory.createForClass(Book);
+
+export class Addinventory {
+  @Prop()
+  item: string;
+  @Prop()
+  itemCode: string;
+  @Prop()
+  quantity: string;
+  @Prop()
+  supply: string;
+  @Prop()
+  date: string;
+  @Prop()
+  unitPrice: string;
+  @Prop()
+  sellPrice: string;
+  @Prop()
+  action: string;
+}
+export const AddinventorySchema = SchemaFactory.createForClass(Addinventory);

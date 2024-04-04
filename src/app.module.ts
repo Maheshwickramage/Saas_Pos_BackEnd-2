@@ -1,9 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { BookModule } from './book/casheir/book.module';
+import { AddinventoryController } from './book/addinventory/addinventory.controller';
+import { AddinventoryService } from './book/addinventory/addinventory.service';
+import { AddinventoryModule } from './book/addinventory/addinventory.module';
 
 @Module({
   imports: [
@@ -13,8 +16,9 @@ import { MongooseModule } from '@nestjs/mongoose';
     }),
     MongooseModule.forRoot(process.env.MONGO_URI),
     BookModule,
+    AddinventoryModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, AddinventoryController],
+  providers: [AppService, AddinventoryService],
 })
 export class AppModule {}
